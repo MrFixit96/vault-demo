@@ -20,10 +20,12 @@ variable "namespace" {
 
 variable "k8s_path" {
   description = "where k8s auth will be mounted"
+  default = "k8s"
 }
 
 variable "kv_path" {
   description = "where k/v secret engine is mounted"
+  default = "kv"
 }
 
 variable "default_lease_ttl_seconds" {

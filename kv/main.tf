@@ -6,8 +6,12 @@ resource "vault_mount" "kv" {
 }
 
 # storing secret
+locals {
+  full_secret_path = "${var.kv_path}/${var.secret_path}"
+}
+
 resource "vault_generic_secret" "secret" {
-  path = var.secret_path
+  path = local.full_secret_path
   data_json = var.secret_data
 
   depends_on = [vault_mount.kv]
