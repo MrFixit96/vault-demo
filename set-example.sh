@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# Vault Address
+#export TF_VAR_vault_address="https://$(get-vault-node):8200
+#export VAULT_ADDR="https://$(get-vault-node):8200
+
 # AppRole for Terraform Vault provider authentication
 export TF_VAR_app_role_mount_point="approle"
 export TF_VAR_role_name="terraform"
@@ -63,8 +68,8 @@ export TF_VAR_starttls=true
 
 #pki
 
-pki_max_lease_ttl_seconds = "86400"
-pki_default_lease_ttl_seconds =  "3600"
-pki_pem_bundle = ""
-pki_issuing_certificates = ""
-pki_role_name = "tf_demo_pki"
+export TF_VAR_pki_max_lease_ttl_seconds="86400"
+export TF_VAR_pki_default_lease_ttl_seconds="3600"
+export TF_VAR_pki_pem_bundle=""
+export TF_VAR_pki_issuing_certificates=""
+export TF_VAR_pki_role_name="tf_demo_pki"
