@@ -1,3 +1,4 @@
+#!/bin/bash
 # AppRole for Terraform Vault provider authentication
 export TF_VAR_app_role_mount_point="approle"
 export TF_VAR_role_name="terraform"
@@ -5,7 +6,7 @@ export TF_VAR_role_id=""
 export TF_VAR_secret_id=""
 
 # Namespace
-export TF_VAR_namespace="marketing"
+export TF_VAR_namespace="tf_demo"
 
 # Policy
 export TF_VAR_policy_name="k8s"
@@ -35,11 +36,35 @@ EOF
 )
 
 # KV
-export TF_VAR_kv_path="kv"
+export TF_VAR_kv_path="kv_tf_demo"
+export TF_VAR_kv_secret_path"demo"
+export TF_VAR_kv_secret_data="{\"foo\":\"bar\"}"
 
-# Kubernetes
-export TF_VAR_k8s_path="k8s"
-export TF_VAR_kubernetes_host=""
-export VAULT_SA_NAME=$(kubectl get sa vault-auth -o jsonpath="{.secrets[*]['name']}")
-export TF_VAR_token_reviewer_jwt=$(kubectl get secret $VAULT_SA_NAME -o jsonpath="{.data.token}" | base64 --decode; echo)
-export TF_VAR_kubernetes_ca_cert=$(kubectl get secret $VAULT_SA_NAME -o jsonpath="{.data['ca\.crt']}" | base64 --decode; echo)
+# # Kubernetes
+# export TF_VAR_k8s_path="k8s"
+# export TF_VAR_kubernetes_host=""
+# export VAULT_SA_NAME=$(kubectl get sa vault-auth -o jsonpath="{.secrets[*]['name']}")
+# export TF_VAR_token_reviewer_jwt=$(kubectl get secret $VAULT_SA_NAME -o jsonpath="{.data.token}" | base64 --decode; echo)
+# export TF_VAR_kubernetes_ca_cert=$(kubectl get secret $VAULT_SA_NAME -o jsonpath="{.data['ca\.crt']}" | base64 --decode; echo)
+
+# LDAP
+export TF_VAR_ldap_path="ldap_tf_demo"
+export TF_VAR_url="ldap://ldap.forumsys.com"
+export TF_VAR_userattr="uid"
+export TF_VAR_userdn="dc=example,dc=com"
+export TF_VAR_groupdn="dc=example,dc=com"
+export TF_VAR_groupfilter="(objectClass=groupOfUniqueNames)"
+export TF_VAR_groupattr="uniqueMember"
+export TF_VAR_binddn="cn=read-only-admin,dc=example,dc=com"
+export TF_VAR_bindpass="password"
+export TF_VAR_certificate=""
+export TF_VAR_insecure_tls=true
+export TF_VAR_starttls=true
+
+#pki
+
+pki_max_lease_ttl_seconds = "86400"
+pki_default_lease_ttl_seconds =  "3600"
+pki_pem_bundle = ""
+pki_issuing_certificates = ""
+pki_role_name = "tf_demo_pki"
