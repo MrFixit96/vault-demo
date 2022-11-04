@@ -2,7 +2,7 @@
 
 Project onboarding automation on HashiCorp Vault Enterprise using Terraform Vault provider.
 
-Shamelessly borrowed from [Sebastien Braun](https://github.com/planetrobbie).
+Shamelessly borrowed from [Sebastien Braun](https://github.com/planetrobbie/terraform-vault).
 
 ## Requirements:
 
